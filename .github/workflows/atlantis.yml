@@ -1,10 +1,9 @@
 name: Atlantis Test
-
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    types: [opened, synchronize]
+  issue_comment:
+    types: [created]
 
 jobs:
   atlantis:
