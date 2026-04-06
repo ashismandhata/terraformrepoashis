@@ -24,3 +24,5 @@ jobs:
           atlantis_args: |
             --autoplan
             --repo-allowlist "github.com/${{ github.repository }}"
+
+# testing terraform
