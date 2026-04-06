@@ -25,4 +25,4 @@ jobs:
             --autoplan
             --repo-allowlist "github.com/${{ github.repository }}"
 
-# testing terraform
+# testing terraform 1 time
