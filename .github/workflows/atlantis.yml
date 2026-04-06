@@ -1,0 +1,27 @@
+name: Atlantis Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  atlantis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Atlantis
+        uses: runatlantis/atlantis@main  # Using main branch as requested
+        env:
+          ATLANTIS_GH_TOKEN: ${{ secrets.ATLANTIS_TOKEN }}
+          ATLANTIS_GH_USER: ${{ github.actor }}
+          # If using AWS/Azure/GCP, add credentials here:
+          # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with:
+          atlantis_args: |
+            --autoplan
+            --repo-allowlist "github.com/${{ github.repository }}"
